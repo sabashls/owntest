@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>sabash</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/jquerycookies.js"></script>
+    <script src="/js/jquery.eventemitter.js"></script>
+    <script src="/js/jqueryjson.js"></script>
+    <script src="/js/jquerydatatables.js"></script>
+    <script src="/js/src/jquery.jsonrpcclient.js"></script>
+    <script src="/js/src/jquery.FSRTC.js"></script>
+    <script src="/js/src/jquery.verto.js"></script>
+    <script src="/js/phonesdk.js"></script>
+    <script src="/js/test.js"></script>
+    <script>
+    </script>
+    </head>
+   <body ng-app='w5fone-App' ng-controller='test-Ctrl'>
+       <form>
+           <div ng-hide='log'>
+  <div class="form-group">
+    <label for="exampleInputEmail1">UserID</label>
+    <input type="text" class="form-control" ng-model="userId" id="exampleInputEmail1" placeholder="UserId">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" ng-model="password" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-success" ng-click="test()">Register</button>
+    </div>
+           
+           
+</form>
+<div ng-show='cal'>
+    <h2>Call page</h2>
+    <div id='calbtn'>
+            <label for="dialnumber">UserID</label>
+    <input type="text" class="form-control" ng-model="dialnumber" id="dialnumber" placeholder="Enter your number">
+           <button type="submit" ng-click="call()">call</button>
+        </div>
+        <div id='cutcalbtn'>
+   <video id="webcam" autoplay="autoplay" style="width:100%; height:100%;"></video>
+            <div ng-hide='cutcal_hngup'>
+             <button type="submit" id="hangup" ng-click="hangup()">hangup</button>
+           </div>
+            </div>
+    </div>
+       <div ng-show='incommingcal'>
+           <b>Incomming Call </b>
+       <button ng-click='answercall()'>Accept</button>
+           <button ng-click='declineincomcal()'>Reject</button>
+       </div>
+    </body>
+</html>

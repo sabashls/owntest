@@ -1,0 +1,131 @@
+*{outline:0;}
+body {background: transparent url("../images/background.jpg") no-repeat scroll 0 0 / 100% auto;}
+.container {min-width: 100%;}
+.header.container {background-color:#fff;padding-bottom: 15px;padding-top: 10px;}
+.nav > li > a:hover {background: transparent none repeat scroll 0 0;}
+.nav li span {clear: left;float: left;text-align: center;width: 100%;}
+.nav li span.nav_label {color: #1e1e1e;font-size: 14px;margin: 10px 0 0;}
+
+.container.content {padding-bottom: 35px;padding-top: 25px;}
+.dial {background: rgba(255, 255, 255, 0.7) none repeat scroll 0 0;border-radius: 15px;padding: 0 0 15px;}
+
+.user_sec {position: relative;padding: 20px 10px;}
+.user_sec .user_thumb {border: 2px solid #02d2b0;border-radius: 50%;display: inline-block;width: 75px;height: 75px}
+.user_sec .user_thumb1 {border: 2px solid #02d2b0;border-radius: 67%;display: inline-block;width: 67px;}
+.user_sec .user_name {color: #0b0b0b;font-size: 18px;padding: 0 0 0 5px;}
+.close {background: transparent url("../images/close_icon.png") no-repeat scroll 0 0;height: 20px;opacity: 1;position: absolute;right: 10px;top: 10px;width: 20px;}
+
+.dial_pad {background: #02d2b0 none repeat scroll 0 0;border-radius: 10px 10px 0 0;}
+.dial_disp {background: #02d2b0 none repeat scroll 0 0;border-radius: 10px 10px 0 0;margin: 0 2px;padding: 7px 3px;position: relative;}
+.dial_disp input {background: #9aeddf none repeat scroll 0 0;border: medium none;border-radius: 10px;color: #02d2b0;font-size: 34px;font-weight: lighter;line-height: 60px;position: relative;text-align: center;width: 100%;}
+.dial_disp button {background: transparent none repeat scroll 0 0;border: medium none;position: absolute;right: 2px;top: 22px;}
+.dial_numbers {display: table;list-style: outside none none;margin: 0 0.9% 0;padding: 0;text-align: center;width: 99%;}
+.dial_numbers > li {border-bottom: 1px solid rgba(255, 255, 255, 0.5);cursor: pointer;display: block;float: left;height: 85px;width: 33%;}
+.dial_numbers > li:nth-child(2n+1) {background: #4ee0c8 none repeat scroll 0 0;}
+.dial_numbers > li:nth-child(2n) {background: #8debdb none repeat scroll 0 0;}
+.dial_numbers > li:nth-child(3n-1) {border-left: 1px solid rgba(255, 255, 255, 0.5);border-right: 1px solid rgba(255, 255, 255, 0.5);}
+.dial_numbers > li .number {color: #00806b;display: inline-block;font-size: 36px;line-height: 1;margin: 15px 0 0;}
+.dial_numbers > li .alpha{color: #fff;font-size: 18px;}
+
+.dial_opt {background: #02d2b0 none repeat scroll 0 0;list-style: outside none none;margin: 0;padding: 0;width: 100%;}
+.dial_opt > li {display: inline-block;padding: 20px;text-align: center;width: 32%;}
+.dial_options .dial_numbers > li {height: 15px;}
+
+.chat_window .cw_header {background: #02d2b0 none repeat scroll 0 0;border-radius: 20px 20px 0 0;display: inline-block;position: relative;width: 100%;}
+.cw_header h4 {color: #fff;font-size: 20px;text-align: center;}
+.cw_header h4 > img {padding: 0 5px 0 0;}
+.cw_header .cw_icon.maxmise {color: transparent;cursor: pointer;position: absolute;right: 15px;top: 15px;}
+
+.chat_window .cw_body {background: rgba(209, 212, 213, 0.9) none repeat scroll 0 0;border-radius: 0 0 15px 15px;padding: 10px 15px 20px;text-align: center;}
+.cw_body .user_image {display: inline-block;max-width: 100%;display:inline-block;text-align: center;position: relative;}
+.cw_body .chat_opt {list-style: outside none none;margin: 0;padding: 0;position: absolute;right: 5px;top: 10px;}
+.cw_body .co_item {cursor:pointer;display: inline-block;padding: 5px;}
+.cw_body .user_image > img {border-bottom: 5px solid #1ea791;border-top: 5px solid #1ea791;display: inline-block;max-width: 100%;}
+.uc_messages {background: #84e8d8 none repeat scroll 0 0;height: 190px;margin: 18px 0 0;overflow-x: hidden;overflow-y: scroll;padding: 15px 10px 0;}
+.uc_messages .message_item {margin: 0 0 8px;}
+.uc_messages .message_item:nth-child(1) {margin: 15px 0 8px;}
+.uc_send {background: #02d2b0 none repeat scroll 0 0;padding: 5px;}
+.uc_send #message {padding: 10px;width: 91%;}
+.uc_send #send {background: #14b79c none repeat scroll 0 0;border: medium none;color: #fff;font-size: 12px;margin: 0 0 0 5px;padding: 12px 20px;}
+
+.message_item span {font-size: 12px;}
+.message_item .cw_user_icon {padding: 0;text-align: center;}
+.message_item.sent .cw_user_msg {background: #e4faf6 none repeat scroll 0 0;}
+.message_item .cw_user_msg {background: #4ee0c8 none repeat scroll 0 0;display: inline-block;padding:10px;text-align: left;}
+.message_item.recieved .cw_user_msg::after {border-bottom: 15px solid transparent;border-right: 15px solid #4ee0c8;border-top: 0 solid #4ee0c8;content: "";height: 0;position: absolute;left: -14px;top: 0;width: 0;}
+.message_item.sent .cw_user_msg::after {border-bottom: 15px solid transparent;border-left: 15px solid #e4faf6;border-top: 0 solid #e4faf6;content: "";height: 0;position: absolute;right: -14px;top: 0;width: 0;}
+.message_item .cw_user_time {padding: 10px 0;text-align: center;}
+
+form#login {padding: 20px;width: 200px;}
+#login p {display: inline-block;margin: 0 0 15px;text-align:center;width: 100%;}
+#login .inp_txt {    padding: 5px;    width: 100%;background: #4fe0c8;border:0;}
+#login .button {
+    background: #fff none repeat scroll 0 0;
+    border: medium none;
+    color: #4e6e6b;
+    font-size: 12px;
+    margin-top:20px;
+    padding: 7px 20px;
+    display: inline-block;
+    border-radius: 4px;
+    box-shadow: 0px 3px 0px 0px #36b09d;
+}
+#login a { color: white;text-align: center; display: block;}
+#settings {width: 768px;height:600px;}
+#settings .heading {background: transparent url("../images/set_head_border.png") repeat-x scroll 0 bottom;height: 67px;margin: 0 0 15px;position: relative;padding:0px 45px;}
+#settings .user.imagae {bottom: -40px;position: absolute;right: 20px;}
+#tabs {background: transparent none repeat scroll 0 0;border: medium none;width: 645px;padding:0 15px;font-size:13px;}
+#tabs .ui-widget-header {background: transparent none repeat scroll 0 0;border: medium none;}
+#tabs .ui-state-default {background: transparent none repeat scroll 0 0;border: medium none;}
+#tabs .ui-state-default.ui-state-active {background: #9aeddf none repeat scroll 0 0;border-radius: 10px 10px 0 0;}
+#tabs .ui-state-default a {color: #2f4c49;}
+#tabs .ui-widget-content {background: #c2f4ec none repeat scroll 0 0;}
+#tabs label {color: #2f4c49;}
+#tabs input {    background: #4fe0c8 none repeat scroll 0 0; border: medium none; color: #fff;padding: 5px;}
+#tabs input[type="text"],#tabs input[type="password"],#tabs input[placeholder]{color:white;}
+::-webkit-input-placeholder{
+   color: white;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: white;  
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white;  
+}
+:-ms-input-placeholder {  
+   color: white;  
+}
+.bg{background: url('../images/head-bg.png') no-repeat right 10px transparent;}
+.nav>li>a{padding:10px;}
+#login .heading {  background: #fff; padding: 33px 15px;  position: relative;margin-bottom:115px;}
+#login .heading .user{ top:25px;position:absolute;left:40%;}
+.fancybox-skin{padding:0px !important;border-radius:8px;}
+.form-login{padding:0 65px;}
+#login{width:340px;padding-bottom:82px;}
+#tabs .radius{border-radius:5px;padding: 5px 37px;margin-top:5px;}
+#tabs .save{    background: #fff none repeat scroll 0 0;
+    border: medium none;
+    color: #4e6e6b;
+    font-size: 12px;
+    margin-top: 20px;
+    padding: 7px 20px;
+    display: inline-block;
+    border-radius: 4px;
+    box-shadow: 0px 3px 0px 0px #36b09d;}
+	#tabs .cancel{ 
+	    border-radius: 5px;
+    padding: 8px 15px;
+    margin-top: 5px;}
+	#tabs #tabs-3 input[type="password"]{width:360px;}
+	#tabs .gender {
+    background: #4fe0c8 none repeat scroll 0 0;
+    border: medium none;
+    padding: 5px;
+}
+.bg_img {
+   width: 100px;
+  height: 100px;
+  margin: 1px 0px 6px 6px;
+}
+	
+	

@@ -1,0 +1,431 @@
+<!DOCTYPE HTML>
+
+<head>
+    <title>Fone5</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" />
+    <link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="/js/moment.js"></script>
+    <script src="/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/js/jquerycookies.js"></script>
+    <script type="text/javascript" src="/js/jquery.eventemitter.js"></script>
+    <script type="text/javascript" src="/js/jqueryjson.js"></script>
+    <script type="text/javascript" src="/js/jquerydatatables.js"></script>
+    <script type="text/javascript" src="/js/src/jquery.jsonrpcclient.js"></script>
+    <script type="text/javascript" src="/js/src/jquery.FSRTC.js"></script>
+    <script type="text/javascript" src="/js/src/jquery.verto.js"></script>
+    <script type="text/javascript" src="/js/phonesdk.js"></script>
+    <script type="text/javascript" src="js/adapter.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".datepicker").datepicker();
+            $('.fancybox').fancybox();
+            $("#tabs").tabs();
+            $('.').fancybox({
+                autoWidth: false,
+                width: 400
+            });
+
+        });
+
+        $(function() {
+            $('#datetimepicker2').datetimepicker({
+                locale: 'ru'
+            });
+        });
+
+    </script>
+</head>
+
+<body ng-app="w5home-App" ng-controller="home-Ctrl">
+    <!---Header---->
+    <div class="header container bg">
+        <img src="images/logo.jpg" />
+        <div class="navbar-header navbar-right ">
+            <ul class="menu nav navbar-nav">
+                <li><a class="fancybox settings" href="#settings"><span class="nav_icon"><img src="images/settings_icon.png"/></span><span class="nav_label">Settings</span></a></li>
+                <li><a href="/signout"><span class="nav_icon"><img src="images/logout_icon.png"/></span><span class="nav_label">Logout</span></a></li>
+            </ul>
+        </div>
+        <div class="" id="login" style="display: none;">
+            <div class="heading">
+                <span class="user imagae">
+                <img src="images/mini-logo.png"/>
+            </span>
+            </div>
+            <form method="post" class="form-login">
+                <p>
+                    <input class="inp_txt" type="text" name="login" value="" placeholder="Username or Email">
+                </p>
+                <p>
+                    <input class="inp_txt" type="password" name="password" value="" placeholder="Password">
+                </p>
+                <p>
+                    <input class="button" type="submit" ng-click="login()" name="commit" value="Sign In">
+                </p>
+                <a href="">Need help?</a>
+            </form>
+        </div>
+        <div id="settings" style="display: none;">
+            <div class="heading">
+                <h2>Settings</h2>
+                <span class="user imagae">
+                <img src="images/mini-logo.png"/>
+            </span>
+            </div>
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">Profile</a></li>
+                    <li><a href="#tabs-2">Audio & video test</a></li>
+                    <li><a href="#tabs-3">Password</a></li>
+                    <li><a href="#tabs-4">Admin</a></li>
+                    <li><a href="#tabs-5">Fone Config</a></li>
+                </ul>
+                <div id="tabs-1">
+                    <div class="col-md-8">
+                        <div class="col-md-12">
+                            <h6>w5 id</h6>
+                            <input type="text" ng-readonly=true value="" ng-model='w5id' name="" style="width: 100%;" />
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="col-md-6">
+                            <h6>First Name</h6>
+                            <input type="text" value="" ng-model='firstname' name="" style="width: 170px;" />
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Last Name</h6>
+                            <input type="text" value="" ng-model='lastname' name="" style="width: 147px;" />
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-12">
+                            <h6>Email</h6>
+                            <input type="text" value="" ng-readonly=true ng-model='email' name="" style="width: 100%;" />
+                        </div>
+                        <div class="col-md-4">
+                            <h6>Birthday</h6>
+
+                            <div class='input-group date' id='datetimepicker2' style="width: 100px;">
+                                <input type="text" ng-model="dob" id="dob" class="datepicker" style="width:100px" placeholder="MM-DD-YYYY" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>Gender</h6>
+                            <div class="dropdown">
+                                <select id="dropdownId" ng-model="gender" ng-init="gender = 1" class="form-control" style="background-color: #4FE0C8;margin: -2px 0px 0px 0px;height:31px;">
+                                    <option value="1">Select</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4"><img id="w5fone" src="images/upload-image1.jpg" alt="" style="
+    margin: 22px 0px 0px 13px;width:100px;height:100px;
+">
+                        <p>Choose your Photo</p>
+
+                        <input type="file" onchange="readURL(this);" style="margin-left: 16px;width:94px;">
+                        <p>Image Shoud be </p>
+                        <p>JPEG,GIF or PNG</p>
+                    </div>
+                    <script>
+                        function readURL(input) {
+                            if (input.files && input.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    $('#w5fone')
+                                        .attr('src', e.target.result)
+                                        .width(100)
+                                        .height(90);
+                                    window.w5image = e.target.result;
+                                };
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        }
+
+                    </script>
+                    <div class="clearfix"></div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <h6>City</h6>
+                            <input type="text" value="" ng-model="city" name="" style="width: 147px;" />
+                        </div>
+                        <div class="col-md-4">
+                            <h6>Country</h6>
+                            <input type="text" value="" name="" ng-model="country" style="width: 147px;" />
+                        </div>
+                        <div class="col-md-4">
+                            <h6>Timezone</h6>
+                            <input type="text" value="" name="" ng-model="timezone" style="width: 147px;" />
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div ng-show='sucess' style="margin: 10px 0px -12px 374px;">
+                        <b style="color: rgb(93, 150, 131);">
+              Profile Updated Sucessfully</b>
+                    </div>
+                    <div class="col-md-offset-6" style="text-align:right;">
+                        <input type="button" class="button save" ng-click="save()" value="Save">
+                        <input type="button" class="button cancel" ng-click='cancel()' value="Cancel">
+
+                    </div>
+                </div>
+                <div id="tabs-2">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="">Option 1</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="">Option 2</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label>
+                            <input type="checkbox" value="" disabled>Option 3</label>
+                    </div>
+                </div>
+                <div id="tabs-3">
+                    <div class="col-md-8">
+                        <h6>Current Password</h6>
+                        <input type="password" name="current_password" ng-model="current_password" value="" />
+                        <h6>New Password</h6>
+                        <input type="password" name="new_password" ng-model="new_password" value="" />
+                        <h6>Confirm Password</h6>
+                        <input type="password" name="confirm_password" ng-model="confirm_password" value="" />
+                        <div style="margin: 4px 0px -12px 131px;">
+                            <b style="color: rgb(93, 150, 131);">
+              {{ password_meg }}</b>
+                        </div>
+                        <div class="col-md-offset-6" style="text-align:right;">
+                            <input type="button" class="button save" ng-click='savepwd()' value="Save" />
+                            <input type="button" class="button cancel" ng-click='cancel()' value="Cancel" />
+
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="tabs-4">
+                    <h4>Upload the following images</h4>
+                    <div class="col-md-3">
+                        <h6>Background image</h6>
+                        <img class="bg_img" src="images/bg1.jpg" alt="" />
+                        <div>
+                            <input class="button radius" type="submit" ng-click='bg_change1("images/bg1.jpg")' name="commit" value="Submit">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>Background image</h6>
+                        <img class="bg_img" src="images/bg2.jpg" alt="" />
+                        <div>
+                            <input class="button radius" type="submit" ng-click='bg_change2("images/bg2.jpg")' name="commit" value="Submit">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>Background image</h6>
+                        <img class="bg_img" src="images/bg3.jpg" alt="" />
+                        <div>
+                            <input class="button radius" type="submit" ng-click='bg_change3("images/bg3.jpg")' name="commit" value="Submit">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>Background image</h6>
+                        <img class="bg_img" src="images/bg4.jpg" alt="" />
+                        <div>
+                            <input class="button radius" type="submit" ng-click='bg_change4("images/bg4.jpg")' name="commit" value="Submit">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6> Defult Background image</h6>
+                        <img class="bg_img" src="images/background.jpg" alt="" />
+                        <div>
+                            <input class="button radius" type="submit" ng-click='bg_change5("images/background.jpg")' name="commit" value="Submit">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="tabs-5">
+                    <p>
+                        <label>User ID</label>
+                    </p>
+                    <p>
+                        <input type="text" ng_model="fone_userID" placeholder="e.g. shaad.khan" />
+                    </p>
+                    <p>
+                        <label>Domain</label>
+                    </p>
+                    <p>
+                        <input type="text" ng_model="fone_domain" placeholder="e.g. sip2sip.info" />
+                    </p>
+                    <p>
+                        <label>Password</label>
+                    </p>
+                    <p>
+                        <input type="password" ng_model="fone_password" />
+                    </p>
+                    <p>
+                        <label>Display Name</label>
+                    </p>
+                    <p>
+                        <input type="text" ng_model="fone_name" placeholder="e.g. Shaad Khan" />
+                    </p>
+                    <button class="button radius" ng-click='config()'>Config</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----Content----->
+    <div class="container content">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="dial">
+                    <div class="user_sec">
+                        <span><img class="user_thumb" id='profile_img' src="images/user_thumb.png"/></span>
+                        <span class="user_name">{{ profile_name }}</span>
+                        <span class="close"></span>
+                    </div>
+                    <div class="dial_pad">
+                        <div class="dial_disp">
+                            <input type="text" ng-model='number' placeholder="Enter Number" />
+                            <button type="button" ng-click='backspace()'><img src="images/delete_icon.png" /></button>
+                        </div>
+                        <ul class="dial_numbers">
+                            <li ng-click='dailno("1")'><span class="number">1</span></li>
+                            <li ng-click='dailno("2")'><span class="number">2</span>
+                                <div class="clearfix"></div><span class="alpha">ABC</span></li>
+                            <li ng-click='dailno("3")'><span class="number">3</span>
+                                <div class="clearfix"></div><span class="alpha">DEF</span></li>
+                            <li ng-click='dailno("4")'><span class="number">4</span>
+                                <div class="clearfix"></div><span class="alpha">GHI</span></li>
+                            <li ng-click='dailno("5")'><span class="number">5</span>
+                                <div class="clearfix"></div><span class="alpha">JKL</span></li>
+                            <li ng-click='dailno("6")'><span class="number">6</span>
+                                <div class="clearfix"></div><span class="alpha">MNO</span></li>
+                            <li ng-click='dailno("7")'><span class="number">7</span>
+                                <div class="clearfix"></div><span class="alpha">PQRS</span></li>
+                            <li ng-click='dailno("8")'><span class="number">8</span>
+                                <div class="clearfix"></div><span class="alpha">TUV</span></li>
+                            <li ng-click='dailno("9")'><span class="number">9</span>
+                                <div class="clearfix"></div><span class="alpha">WXYZ</span></li>
+                            <li><span class="number">*</span></li>
+                            <li ng-click='dailno("0")'><span class="number">0</span>
+                                <div class="clearfix"></div><span class="alpha">+</span></li>
+                            <li><span class="number">#</span></li>
+                        </ul>
+                        <div class="dial_options">
+                            <ul class="dial_opt">
+                                <li ng-click='voicecallbtn()'><img src="images/headphone_icon.png" /></li>
+                                <li ng-click='videocallbtn()'><img src="images/video_icon.png" /></li>
+                                <li ng-click='textcallbtn()'><img src="images/message_icon.png" /></li>
+                            </ul>
+                            <ul class="dial_numbers">
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 chat_window">
+                <div class="cw_header">
+                    <h4 ><img src="images/reg_icon.png" />{{header_msg}}</h4>
+                    <span class="cw_icon maxmise" ng-click='fullscreen()'><img src="images/max_icon.png" /></span>
+
+                </div>
+                <div class="cw_body">
+                    <div ng-hide='defult' class="user_image">
+                        <img src="images/user_image.JPG" />
+                        <ul ng-show='controls' class="chat_opt">
+                            <li class="co_item" ng-click='fullscreen()'><img src="images/max_chat_icon.png" /></li>
+                            <li class="co_item"><img src="images/webcam_icon.png" ng-click='img_click()' /></li>
+                            <li class="co_item"><img src="images/mic_icon.png" /></li>
+                        </ul>
+                    </div>
+                        <div ng-show='video' id='video'>
+                          <video id="webcam" autoplay="" mute="" controls="" style="margin: 8px 131px 0px; width: 555px; height: 416px; display: block;"></video>
+                        </div>
+                        <div ng-show='hangups'>
+                            <button ng-click='endcallbtn()'>End_Call</button>
+                        </div>
+                    <div ng-show='abcd' class="user_image">
+                        <h1>Incomming Call was receiving</h1>
+                         <button class="btn btn-success" ng-click='Incall_Acptbtn()'>Accept</button>
+                        <button class="btn btn-danger" ng-click='Incall_Rejectbtn()'>Reject</button>
+                        
+                    </div>
+                    <div class="user_chat">
+                        <div class="uc_messages scroll-pane">
+                            <p class="message_item row recieved">
+                                <span class="col-md-1 cw_user_icon"><img src="images/chat_user_icon.png"/><span class="clearfix"></span><span>Aug 12</span></span>
+                                <span class="col-md-10 cw_user_msg">think about it..when you and me are  alking in chat....how in skype it comes...the chat screen below should be designed </span>
+                                <span class="col-md-1 cw_user_time">10:15AM</span>
+                            </p>
+                            <p class="message_item row sent">
+                                <span class="col-md-1 cw_user_time">10:15AM</span>
+                                <span class="col-md-10 cw_user_msg">I will check and give additional inputs if any.Please also send it to email ID ...because i won't </span>
+                                <span class="col-md-1 cw_user_icon"><img src="images/chat_user_icon.png"/><span class="clearfix"></span><span>Aug 12</span></span>
+                            </p>
+                            <p class="message_item row recieved">
+                                <span class="col-md-1 cw_user_icon"><img src="images/chat_user_icon.png"/><span class="clearfix"></span><span>Aug 12</span></span>
+                                <span class="col-md-10 cw_user_msg">think about it..when you and me are  alking in chat....how in skype it comes...the chat screen </span>
+                                <span class="col-md-1 cw_user_time">10:15AM</span>
+                            </p>
+                            <p class="message_item row sent">
+                                <span class="col-md-1 cw_user_time">10:15AM</span>
+                                <span class="col-md-10 cw_user_msg">I will check and give additional inputs if any.Please also send it to email ID ...because i won't </span>
+                                <span class="col-md-1 cw_user_icon"><img src="images/chat_user_icon.png"/><span class="clearfix"></span><span>Aug 12</span></span>
+                            </p>
+                            <p class="message_item row recieved">
+                                <span class="col-md-1 cw_user_icon"><img src="images/chat_user_icon.png"/><span class="clearfix"></span><span>Aug 12</span></span>
+                                <span class="col-md-10 cw_user_msg">think about it..when you and me are  alking in chat....how in skype it comes...the chat screen below should be designed </span>
+                                <span class="col-md-1 cw_user_time">10:15AM</span>
+                            </p>
+                            <p class="message_item row sent">
+                                <span class="col-md-1 cw_user_time">10:15AM</span>
+                                <span class="col-md-10 cw_user_msg">I will check and give additional inputs if any.Please also send it to email ID ...because i won't </span>
+                                <span class="col-md-1 cw_user_icon"><img src="images/chat_user_icon.png"/><span class="clearfix"></span><span>Aug 12</span></span>
+                            </p>
+                            <p class="message_item row recieved">
+                                <span class="col-md-1 cw_user_icon"><img src="images/chat_user_icon.png"/><span class="clearfix"></span><span>Aug 12</span></span>
+                                <span class="col-md-10 cw_user_msg">think about it..when you and me are  alking in chat....how in skype it comes...the chat screen </span>
+                                <span class="col-md-1 cw_user_time">10:15AM</span>
+                            </p>
+                            <p class="message_item row sent">
+                                <span class="col-md-1 cw_user_time">10:15AM</span>
+                                <span class="col-md-10 cw_user_msg">I will check and give additional inputs if any.Please also send it to email ID ...because i won't </span>
+                                <span class="col-md-1 cw_user_icon"><img src="images/chat_user_icon.png"/><span class="clearfix"></span><span>Aug 12</span></span>
+                            </p>
+                        </div>
+                        <div class="uc_send">
+                            <input type="text" id="message" placeholder="Type a message here" />
+                            <button id="send" class="right">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
